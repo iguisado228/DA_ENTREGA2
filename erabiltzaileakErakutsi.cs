@@ -1,22 +1,17 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Windows.Forms;
-using Konexioa;
-using MySql.Data.MySqlClient;
+using Konexioa;// importante: para usar la clase Konexioa
 
 namespace DA_ENTREGA2
 {
-    public partial class Menu : Form
+    public partial class erabiltzaileakErakutsi : Form
     {
-        private langilea langilea;
-
-        public Menu(langilea l)
+        public erabiltzaileakErakutsi()
         {
-            InitializeComponent();   // Usa el generado por el diseñador
-            langilea = l;
-            this.Load += new EventHandler(Menu_Load);
+            InitializeComponent();
             KargatuErabiltzaileak();
-
         }
 
         private void KargatuErabiltzaileak()
@@ -47,9 +42,14 @@ namespace DA_ENTREGA2
             }
         }
 
-        private void Menu_Load(object sender, EventArgs e)
+        private void erabiltzaileakErakutsi_Load(object sender, EventArgs e)
         {
-            this.Text = "Ongi etorri, " + langilea.erabiltzaile_izena;
+            // Aquí no hace falta nada si ya llamas a KargatuErabiltzaileak() en el constructor
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

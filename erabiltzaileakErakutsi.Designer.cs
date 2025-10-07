@@ -1,6 +1,6 @@
 ﻿namespace DA_ENTREGA2
 {
-    partial class Menu
+    partial class erabiltzaileakErakutsi
     {
         /// <summary>
         /// Required designer variable.
@@ -35,20 +35,20 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 7);
+            this.dataGridView1.Location = new System.Drawing.Point(91, 71);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(887, 406);
+            this.dataGridView1.Size = new System.Drawing.Size(887, 385);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // Menu
+            // erabiltzaileakErakutsi
             // 
-            this.ClientSize = new System.Drawing.Size(901, 475);
+            this.ClientSize = new System.Drawing.Size(1124, 563);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Menu";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu";
+            this.Name = "erabiltzaileakErakutsi";
+            this.Load += new System.EventHandler(this.erabiltzaileakErakutsi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -56,7 +56,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label TXT_menuPrintzipala;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
