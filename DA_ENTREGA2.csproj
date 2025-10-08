@@ -104,6 +104,12 @@
     <Compile Include="erabiltzaileakErakutsi.Designer.cs">
       <DependentUpon>erabiltzaileakErakutsi.cs</DependentUpon>
     </Compile>
+    <Compile Include="editatu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editatu.Designer.cs">
+      <DependentUpon>editatu.cs</DependentUpon>
+    </Compile>
     <Compile Include="konexioa.cs" />
     <Compile Include="langilea.cs" />
     <Compile Include="login.cs">
@@ -122,6 +128,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="erabiltzaileakErakutsi.resx">
       <DependentUpon>erabiltzaileakErakutsi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editatu.resx">
+      <DependentUpon>editatu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>

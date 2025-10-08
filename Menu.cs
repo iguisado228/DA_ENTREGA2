@@ -12,20 +12,20 @@ namespace DA_ENTREGA2
 
         public Menu(langilea l)
         {
-            InitializeComponent();   
+            InitializeComponent();   // Usa el generado por el diseñador
             langilea = l;
             this.Load += new EventHandler(Menu_Load);
             KargatuErabiltzaileak();
-            this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.None;
 
         }
 
         private void KargatuErabiltzaileak()
         {
+            // Crear una instancia de tu clase de conexión
             Konexioa.Konexioa konexioa = new Konexioa.Konexioa();
 
-            string kontsulta = "SELECT izena AS 'Izena', abizena1 AS 'Lehen abizena', abizena2 AS 'Bigarren abizena', nan AS 'NAN-a', jaiotza_data AS 'Jaiotza data', posta_elektronikoa AS 'Posta elektronikoa', telefono_zenbakia AS 'Telefono zenbakia', helbidea AS 'Helbidea' FROM erabiltzaileak";
+            // Consulta SQL
+            string kontsulta = "SELECT izena, abizena1, abizena2, nan, jaiotza_data, posta_elektronikoa, telefono_zenbakia, helbidea FROM erabiltzaileak";
 
             try
             {
@@ -52,9 +52,33 @@ namespace DA_ENTREGA2
             this.Text = "Ongi etorri, " + langilea.erabiltzaile_izena;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnEditatu_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow fila = dataGridView1.SelectedRows[0];
 
+                // Extraemos los valores de la fila seleccionada
+                string izena = fila.Cells["Izena"].Value.ToString();
+                string abizena1 = fila.Cells["Lehen abizena"].Value.ToString();
+                string abizena2 = fila.Cells["Bigarren abizena"].Value.ToString();
+                string nan = fila.Cells["NAN-a"].Value.ToString();
+                string jaiotza_data = fila.Cells["Jaiotza data"].Value.ToString();
+                string posta = fila.Cells["Posta elektronikoa"].Value.ToString();
+                string telefono = fila.Cells["Telefono zenbakia"].Value.ToString();
+                string helbidea = fila.Cells["Helbidea"].Value.ToString();
+
+                // Abrimos el formulario de edición con los datos
+                editatu ed = new editatu(izena, abizena1, abizena2, nan, jaiotza_data, posta, telefono, helbidea);
+                ed.ShowDialog();
+
+                // Refrescamos los datos del grid al volver
+                KargatuErabiltzaileak();
+            }
+            else
+            {
+                MessageBox.Show("Mesedez, aukeratu erabiltzaile bat editatzeko.");
+            }
         }
     }
 }
