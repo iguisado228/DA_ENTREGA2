@@ -15,6 +15,8 @@ namespace DA_ENTREGA2
         public login()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private void login_Load(object sender, EventArgs e)
@@ -51,5 +53,19 @@ namespace DA_ENTREGA2
             }
         }
 
+        private void LBL_erabiltzailea_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LBL_pasahitza_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void atera_BTN_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -39,12 +39,13 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(887, 406);
+            this.dataGridView1.Size = new System.Drawing.Size(921, 406);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Menu
             // 
-            this.ClientSize = new System.Drawing.Size(901, 475);
+            this.ClientSize = new System.Drawing.Size(1342, 475);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

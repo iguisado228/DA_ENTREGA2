@@ -12,20 +12,20 @@ namespace DA_ENTREGA2
 
         public Menu(langilea l)
         {
-            InitializeComponent();   // Usa el generado por el diseñador
+            InitializeComponent();   
             langilea = l;
             this.Load += new EventHandler(Menu_Load);
             KargatuErabiltzaileak();
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
 
         }
 
         private void KargatuErabiltzaileak()
         {
-            // Crear una instancia de tu clase de conexión
             Konexioa.Konexioa konexioa = new Konexioa.Konexioa();
 
-            // Consulta SQL
-            string kontsulta = "SELECT izena, abizena1, abizena2, nan, jaiotza_data, posta_elektronikoa, telefono_zenbakia, helbidea FROM erabiltzaileak";
+            string kontsulta = "SELECT izena AS 'Izena', abizena1 AS 'Lehen abizena', abizena2 AS 'Bigarren abizena', nan AS 'NAN-a', jaiotza_data AS 'Jaiotza data', posta_elektronikoa AS 'Posta elektronikoa', telefono_zenbakia AS 'Telefono zenbakia', helbidea AS 'Helbidea' FROM erabiltzaileak";
 
             try
             {
@@ -50,6 +50,11 @@ namespace DA_ENTREGA2
         private void Menu_Load(object sender, EventArgs e)
         {
             this.Text = "Ongi etorri, " + langilea.erabiltzaile_izena;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
