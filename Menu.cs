@@ -56,5 +56,10 @@ namespace DA_ENTREGA2
         {
 
         }
+
+        private void Menu_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
