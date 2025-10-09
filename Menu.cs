@@ -12,20 +12,20 @@ namespace DA_ENTREGA2
 
         public Menu(langilea l)
         {
-            InitializeComponent();   // Usa el generado por el diseñador
+            InitializeComponent(); 
             langilea = l;
             this.Load += new EventHandler(Menu_Load);
             KargatuErabiltzaileak();
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
 
         }
 
         private void KargatuErabiltzaileak()
         {
-            // Crear una instancia de tu clase de conexión
             Konexioa.Konexioa konexioa = new Konexioa.Konexioa();
 
-            // Consulta SQL
-            string kontsulta = "SELECT izena, abizena1, abizena2, nan, jaiotza_data, posta_elektronikoa, telefono_zenbakia, helbidea FROM erabiltzaileak";
+            string kontsulta = "SELECT izena AS 'Izena', abizena1 AS 'Lehen abizena', abizena2 AS 'Bigarren abizena', nan AS 'NAN-a', jaiotza_data AS 'Jaiotza data', posta_elektronikoa AS 'Posta elektronikoa', telefono_zenbakia AS 'Telefono zenbakia', helbidea AS 'Helbidea' FROM erabiltzaileak";
 
             try
             {
@@ -58,7 +58,6 @@ namespace DA_ENTREGA2
             {
                 DataGridViewRow fila = dataGridView1.SelectedRows[0];
 
-                // Extraemos los valores de la fila seleccionada
                 string izena = fila.Cells["Izena"].Value.ToString();
                 string abizena1 = fila.Cells["Lehen abizena"].Value.ToString();
                 string abizena2 = fila.Cells["Bigarren abizena"].Value.ToString();
@@ -68,11 +67,9 @@ namespace DA_ENTREGA2
                 string telefono = fila.Cells["Telefono zenbakia"].Value.ToString();
                 string helbidea = fila.Cells["Helbidea"].Value.ToString();
 
-                // Abrimos el formulario de edición con los datos
                 editatu ed = new editatu(izena, abizena1, abizena2, nan, jaiotza_data, posta, telefono, helbidea);
                 ed.ShowDialog();
 
-                // Refrescamos los datos del grid al volver
                 KargatuErabiltzaileak();
             }
             else
@@ -81,9 +78,34 @@ namespace DA_ENTREGA2
             }
         }
 
+        private void sortu_BTN_Click(object sender, EventArgs e)
+        {
+            sortu s = new sortu();
+            s.ShowDialog();
+
+            KargatuErabiltzaileak();
+        }
+
         private void Menu_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void ezabatu_BTN_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow fila = dataGridView1.SelectedRows[0];
+                string nan = fila.Cells["NAN-a"].Value.ToString();
+
+                ezabatu.erabiltzaileaEzabatu(nan);
+
+                KargatuErabiltzaileak();
+            }
+            else
+            {
+                MessageBox.Show("Mesedez, aukeratu erabiltzaile bat ezabatzeko.");
+            }
         }
     }
 }

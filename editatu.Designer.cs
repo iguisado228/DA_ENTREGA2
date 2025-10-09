@@ -36,7 +36,7 @@
             this.txtNan = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtHelbidea = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
+            this.editatu_BTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtIzena
@@ -66,6 +66,7 @@
             this.txtJaiotzaData.Name = "txtJaiotzaData";
             this.txtJaiotzaData.Size = new System.Drawing.Size(169, 22);
             this.txtJaiotzaData.TabIndex = 3;
+            this.txtJaiotzaData.TextChanged += new System.EventHandler(this.txtJaiotzaData_TextChanged);
             // 
             // txtAbizena1
             // 
@@ -95,21 +96,23 @@
             this.txtHelbidea.Size = new System.Drawing.Size(169, 22);
             this.txtHelbidea.TabIndex = 7;
             // 
-            // btnGuardar
+            // editatu_BTN
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(674, 349);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(177, 61);
-            this.btnGuardar.TabIndex = 8;
-            this.btnGuardar.Text = "Gorde";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.editatu_BTN.ForeColor = System.Drawing.Color.Black;
+            this.editatu_BTN.Location = new System.Drawing.Point(674, 349);
+            this.editatu_BTN.Name = "editatu_BTN";
+            this.editatu_BTN.Size = new System.Drawing.Size(177, 61);
+            this.editatu_BTN.TabIndex = 8;
+            this.editatu_BTN.Text = "Gorde";
+            this.editatu_BTN.UseVisualStyleBackColor = true;
+            this.editatu_BTN.Click += new System.EventHandler(this.editatu_BTN_Click);
             // 
             // editatu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 485);
-            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.editatu_BTN);
             this.Controls.Add(this.txtHelbidea);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtNan);
@@ -120,6 +123,7 @@
             this.Controls.Add(this.txtIzena);
             this.Name = "editatu";
             this.Text = "editatu";
+            this.Load += new System.EventHandler(this.editatu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,6 +139,6 @@
         private System.Windows.Forms.TextBox txtNan;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtHelbidea;
-        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button editatu_BTN;
     }
 }

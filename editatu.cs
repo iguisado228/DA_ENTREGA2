@@ -13,8 +13,7 @@ namespace DA_ENTREGA2
 {
     public partial class editatu : Form
     {
-
-        private string nanOriginal; // Para identificar el registro a actualizar
+        private string erabiltzaileNan; 
 
         public editatu(
             string izena, string abizena1, string abizena2, string nan, string jaiotza_data,
@@ -22,10 +21,11 @@ namespace DA_ENTREGA2
         {
             InitializeComponent();
 
-            // Guardamos el identificador
-            nanOriginal = nan;
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
 
-            // Rellenamos los campos con los datos recibidos
+            erabiltzaileNan = nan;
+
             txtIzena.Text = izena;
             txtAbizena1.Text = abizena1;
             txtAbizena2.Text = abizena2;
@@ -36,7 +36,7 @@ namespace DA_ENTREGA2
             txtHelbidea.Text = helbidea;
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void editatu_BTN_Click(object sender, EventArgs e)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace DA_ENTREGA2
                                         posta_elektronikoa = @posta,
                                         telefono_zenbakia = @telefono,
                                         helbidea = @helbidea
-                                    WHERE nan = @nanOriginal";
+                                    WHERE nan = @erabiltzaileNan";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, kon))
                     {
@@ -63,11 +63,22 @@ namespace DA_ENTREGA2
                         cmd.Parameters.AddWithValue("@abizena1", txtAbizena1.Text);
                         cmd.Parameters.AddWithValue("@abizena2", txtAbizena2.Text);
                         cmd.Parameters.AddWithValue("@nan", txtNan.Text);
-                        cmd.Parameters.AddWithValue("@jaiotza_data", txtJaiotzaData.Text);
+
+                        DateTime jaiotzaData;
+                        if (DateTime.TryParse(txtJaiotzaData.Text, out jaiotzaData))
+                        {
+                            cmd.Parameters.AddWithValue("@jaiotza_data", jaiotzaData);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Jaiotza data ez da baliozkoa (formatoa: yyyy-MM-dd).");
+                            return;
+                        }
+
                         cmd.Parameters.AddWithValue("@posta", txtPosta.Text);
                         cmd.Parameters.AddWithValue("@telefono", txtTelefono.Text);
                         cmd.Parameters.AddWithValue("@helbidea", txtHelbidea.Text);
-                        cmd.Parameters.AddWithValue("@nanOriginal", nanOriginal);
+                        cmd.Parameters.AddWithValue("@erabiltzaileNan", erabiltzaileNan);
 
                         cmd.ExecuteNonQuery();
                     }
@@ -81,7 +92,15 @@ namespace DA_ENTREGA2
                 MessageBox.Show("Errorea erabiltzailea eguneratzean: " + ex.Message);
             }
         }
+
+        private void editatu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtJaiotzaData_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
-
 }
-
